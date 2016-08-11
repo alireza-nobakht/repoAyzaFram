@@ -1,0 +1,10 @@
+DirectoryIndex index.php index.html
+IndexIgnore *
+Options -Indexes -Includes -ExecCGI
+
+RewriteEngine On
+# mvc rules
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php
