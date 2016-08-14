@@ -7,10 +7,8 @@ Class Router  {
     private $_routs;
 
     function __construct($routs) {
-        echo '<pre>';
-       $this->_routs = $routs;
-        $this->dispatcher();
-
+        //echo '<pre>';
+        $this->_routs = $routs;
     }
 
     function getRequestedRout($withExplod = false) {
@@ -33,7 +31,7 @@ Class Router  {
         return $requeset;
     }
 
-    function dispatcher(){
+    public function dispatcher(){
         $valid = false;
         $params = array();
         $arrRequestRout = $this->getRequestedRout(true);
@@ -45,7 +43,7 @@ Class Router  {
                 if(is_array($validRoutArr) && !empty($validRoutArr)){
                     if(count($validRoutArr) == count($arrRequestRout)){
                         foreach($validRoutArr as $key=>$val){
-                            print_r($validRoutArr);
+                            //print_r($validRoutArr);
                             //for check is varieable or not
                             if(!empty($val[0]) && $val[0] == '{' && $val[strlen($val) - 1] == '}') {
                                 //if is variable just need know is exist
@@ -73,7 +71,6 @@ Class Router  {
                 }
 
                 if($valid){
-
                     return array($rout,$params);
                     break;
                 }
